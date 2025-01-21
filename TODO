@@ -1,9 +1,8 @@
-- [ ] Seed RDS instance w/ json data
+- [ ] Connect to local postgres container
 
-- [ ] Make a boilerplate express.js app
-
-- [ ] Have frontend retrieve data from backend
+- [ ] Have frontend retrieve data from next.js api
 
 **Completed**
 
 - [x] Deploy an RDS Intance using cloudformation
+- [x] Seed RDS instance w/ json data
