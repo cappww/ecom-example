@@ -1,5 +1,9 @@
-- [ ] Deploy an RDS Intance using cloudformation
-
 - [ ] Seed RDS instance w/ json data
 
 - [ ] Make a boilerplate express.js app
+
+- [ ] Have frontend retrieve data from backend
+
+**Completed**
+
+- [x] Deploy an RDS Intance using cloudformation
