@@ -4,7 +4,7 @@
 ```
 aws cloudformation create-stack \
   --stack-name ecom-stack \
-  --template-body file://infra.yml
+  --template-body file://aws.yml
 ```
 
 **Connect to EC2**

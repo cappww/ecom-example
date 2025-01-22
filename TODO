@@ -1,8 +1,11 @@
-- [ ] Connect to local postgres container
-
-- [ ] Have frontend retrieve data from next.js api
+- [ ] test cloudformation w/ EIP
+- [ ] manually deploy next.js project
+- [ ] use certbot for certificates
+- [ ] use nginx for traffic
 
 **Completed**
 
+- [x] Connect to local postgres container
+- [x] Have frontend retrieve data from next.js api
 - [x] Deploy an RDS Intance using cloudformation
 - [x] Seed RDS instance w/ json data
