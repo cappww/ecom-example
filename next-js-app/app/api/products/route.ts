@@ -19,7 +19,7 @@ export async function GET(request: Request) {
     password: process.env.DB_PASSWORD,
     port: Number(process.env.DB_PORT),
     ssl:
-      process.env.NODE_ENV === "production"
+      process.env.APP_ENV === "production"
         ? {
             rejectUnauthorized: false,
           }

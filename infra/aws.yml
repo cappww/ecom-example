@@ -84,8 +84,8 @@ Resources:
       DBInstanceClass: db.t3.micro
       AllocatedStorage: "20"
       StorageType: gp2
-      MasterUsername: capp
-      MasterUserPassword: password123
+      MasterUsername: !Sub ${MasterUsername}
+      MasterUserPassword: !Sub ${MasterUserPassword}
       DBName: ecomdb
       PubliclyAccessible: false
       MultiAZ: false
