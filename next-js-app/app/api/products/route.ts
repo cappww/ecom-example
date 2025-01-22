@@ -18,32 +18,51 @@ export async function GET(request: Request) {
     database: process.env.DB_NAME,
     password: process.env.DB_PASSWORD,
     port: Number(process.env.DB_PORT),
+    ssl: {
+      rejectUnauthorized: false,
+    },
   });
 
-  await client.connect();
+  try {
+    await client.connect();
+  } catch (error) {
+    console.error("Failed to connect to the database:", error);
+    return NextResponse.json(
+      { error: "Database connection failed" },
+      { status: 500 }
+    );
+  }
 
-  const query = `
+  try {
+    const query = `
     SELECT * FROM products
     WHERE name ILIKE $1 OR description ILIKE $1
     LIMIT $2 OFFSET $3
   `;
-  const values = [`%${search}%`, limit, (page - 1) * limit];
+    const values = [`%${search}%`, limit, (page - 1) * limit];
 
-  const res = await client.query(query, values);
-  const totalQuery = `
+    const res = await client.query(query, values);
+    const totalQuery = `
     SELECT COUNT(*) FROM products
     WHERE name ILIKE $1 OR description ILIKE $1
   `;
-  const totalRes = await client.query(totalQuery, [`%${search}%`]);
+    const totalRes = await client.query(totalQuery, [`%${search}%`]);
 
-  await client.end();
+    const totalProducts = parseInt(totalRes.rows[0].count, 10);
 
-  const totalProducts = parseInt(totalRes.rows[0].count, 10);
-
-  return NextResponse.json({
-    products: res.rows,
-    totalProducts: totalProducts,
-    currentPage: page,
-    totalPages: Math.ceil(totalProducts / limit),
-  });
+    return NextResponse.json({
+      products: res.rows,
+      totalProducts: totalProducts,
+      currentPage: page,
+      totalPages: Math.ceil(totalProducts / limit),
+    });
+  } catch (error) {
+    console.error("Query execution failed:", error);
+    return NextResponse.json(
+      { error: "Query execution failed" },
+      { status: 500 }
+    );
+  } finally {
+    await client.end();
+  }
 }

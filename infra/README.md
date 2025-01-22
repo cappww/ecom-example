@@ -13,12 +13,18 @@ aws cloudformation create-stack \
 ssh ec2-user@<ip> -i <pem file>
 ```
 
-**Install Postgres CLI**
+**Install Tools**
 
 ```
 sudo yum update -y
 sudo yum install postgresql15 -y
+sudo yum install nginx -y
+sudo yum install certbot -y
+sudo yum install python3-certbot-nginx -y
 ```
+
+**Certbot**
+
 
 **Connect to DB**
 

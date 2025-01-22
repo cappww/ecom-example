@@ -118,7 +118,7 @@ Resources:
     Properties:
       InstanceType: t2.micro
       ImageId: ami-0118dc74bd8f98b13
-      KeyName: ecom
+      KeyName: ecom-server
       VpcId: !Ref VPC
       SubnetId: !Ref PublicSubnet
       SecurityGroupIds:
