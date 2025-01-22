@@ -1,3 +1,4 @@
+## AWS RDS
 **Launch Stack**
 
 ```
@@ -30,4 +31,19 @@ psql -h <db endpoint> -p 5432 -U capp -d postgres
 ```
 psql -h <db endpoint> -p 5432 -U capp -d postgres -f ./seed.sql
 
+```
+
+---
+
+## Docker
+**Make Docker Image with Seeded Data**
+
+```
+docker build -t postgres-db .
+```
+
+**Run Docker Container**
+
+```
+docker run -d --name postgres-instance -p 5432:5432 postgres-db
 ```
