@@ -1,10 +1,10 @@
-import { useCart } from "../contexts/cart-context"
-import { Button } from "@/components/ui/button"
+import { useCart } from "../contexts/cart-context";
+import { Button } from "@/app/components/ui/button";
 
 export function CartDisplay() {
-  const { cart, removeFromCart, clearCart } = useCart()
+  const { cart, removeFromCart, clearCart } = useCart();
 
-  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
+  const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
   return (
     <div className="border rounded-lg p-4 shadow-sm">
@@ -14,12 +14,19 @@ export function CartDisplay() {
       ) : (
         <>
           {cart.map((item) => (
-            <div key={item.id} className="flex justify-between items-center mb-2">
+            <div
+              key={item.id}
+              className="flex justify-between items-center mb-2"
+            >
               <span>
                 {item.name} (x{item.quantity})
               </span>
               <span>${(item.price * item.quantity).toFixed(2)}</span>
-              <Button variant="destructive" size="sm" onClick={() => removeFromCart(item.id)}>
+              <Button
+                variant="destructive"
+                size="sm"
+                onClick={() => removeFromCart(item.id)}
+              >
                 Remove
               </Button>
             </div>
@@ -33,6 +40,5 @@ export function CartDisplay() {
         </>
       )}
     </div>
-  )
+  );
 }
-

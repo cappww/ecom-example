@@ -5,7 +5,7 @@ import { useInView } from "react-intersection-observer";
 import { ProductList } from "./components/product-list";
 import { CartDisplay } from "./components/cart-display";
 import { CartProvider } from "./contexts/cart-context";
-import { Input } from "@/components/ui/input";
+import { Input } from "@/app/components/ui/input";
 import type { Product } from "./data/products";
 
 const PRODUCTS_PER_PAGE = 9;

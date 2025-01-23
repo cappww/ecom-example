@@ -1,7 +1,7 @@
 import Image from "next/image";
 import type { Product } from "../data/products";
 import { useCart } from "../contexts/cart-context";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/app/components/ui/button";
 
 export function ProductCard({ product }: { product: Product }) {
   const { addToCart } = useCart();
